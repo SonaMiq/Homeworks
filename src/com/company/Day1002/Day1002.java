@@ -30,10 +30,7 @@ public class Day1002 {
      * @param number
      */
     public static boolean isEven(int number) {
-        if (number % 2 == 0)
-            return true;
-        else
-            return false;
+        return number % 2 == 0;
     }
 
     /**
@@ -54,10 +51,7 @@ public class Day1002 {
      * @param number
      */
     public static boolean isMultiple5(int number) {
-        if (number % 5 == 0)
-            return true;
-        else
-            return false;
+        return number % 5 == 0;
     }
 
     /**
@@ -304,16 +298,13 @@ public class Day1002 {
      * @return count of equals numbers
      */
     public static int countOfEqualsNumbers(int a, int b, int c) {
-        int count = 0;
-        if (a == b) {
-            count++;
-            if (b == c)
-                count++;
-        } else if (b == c)
-            count++;
-        else if (c == a)
-            count++;
-        return count == 0 ? 0 : count + 1;
+
+        if(a==b&&b==c)
+            return 3;
+        else if (a==b||a==c||b==c)
+            return 2;
+        else
+            return 0;
     }
 
     /**
@@ -374,6 +365,9 @@ public class Day1002 {
         return min;
     }
 
+    public static boolean inSameQuarter(int x1, int y1, int x2, int y2) {
+        return ((x1 > 0 == x2 > 0) && (y1 > 0 == y2 > 0));
+    }
 
     public static void main(String[] args) {
         System.out.println(checkedIceCreamBalls(14));
