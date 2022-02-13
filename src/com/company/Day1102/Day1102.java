@@ -47,8 +47,8 @@ public class Day1102 {
      * achieve Math.abs(a) function
      */
 
-    public static boolean max(int a, int b) {
-        return a > b ? true : false;
+    public static int max(int a, int b) {
+        return a > b ? a : b;
     }
 
     public static int abs(int a) {
@@ -72,20 +72,22 @@ public class Day1102 {
      * operator.Input numbers from console
      */
     public static int maxOfTree() {
+
         Scanner scanner = new Scanner(System.in);
         int a, b, c;
         a = scanner.nextInt();
         b = scanner.nextInt();
         c = scanner.nextInt();
-        return a > b ? a > c ? a : c : b > c ? b : c;
+        //return a > b ? a > c ? a : c : b > c ? b : c;
+        return max(max(a, b), c);
     }
 
     /**
-     * Write Java Program to check Vowel or Consonant using Switch Case.
+     * Write Java Program to check capital or lowercase using Switch Case.
      * 65-90 uppercase
      * 97-122 lowercase
      */
-    public static void vowelOrConsonant(char letter) {
+    public static void lowerOrCapitalLetter(char letter) {
         int state = 0;
         if (letter + 0 >= 65 && letter + 0 <= 90) {
             state = 1;
@@ -94,16 +96,36 @@ public class Day1102 {
             state = 2;
         switch (state) {
             case 1:
-                System.out.println(letter + " is lower letter");
+                System.out.println(letter + " is capital letter");
                 break;
             case 2:
-                System.out.println(letter + " is consonant letter");
+                System.out.println(letter + " is lowercase letter");
                 break;
             case 0:
                 System.out.println("It is not a letter");
         }
+    }
 
-
+    /**
+     * Write Java Program to check vowel or consonant using Switch Case.
+     */
+    public static void vowelOrConsonant(char letter) {
+        switch (letter) {
+            case 'A':
+            case 'a':
+            case 'E':
+            case 'e':
+            case 'I':
+            case 'i':
+            case 'O':
+            case 'o':
+            case 'U':
+            case 'u':
+                System.out.println("It is vowel letter");
+                break;
+            default:
+                System.out.println("It is consonant letter");
+        }
     }
 
     /**
@@ -152,11 +174,16 @@ public class Day1102 {
      */
 
     public static void chooseCorrect() {
-        System.out.println("Choose correct answer: Capital of Armenia is....write answer");
+        System.out.println("Choose correct answer: Capital of Armenia is...." + "\n" +
+                "A.Paris" + "\n" +
+                "B.London" + "\n" +
+                "C.Moscow" + "\n" +
+                "D.Yerevan" + "\n" +
+                "Enter your choice:");
         Scanner sc = new Scanner(System.in);
-        String answer = sc.next();
+        char answer = sc.next().charAt(0);
         switch (answer) {
-            case "Yerevan":
+            case 'D':
                 System.out.println("Congratulation");
                 break;
             default:
@@ -191,7 +218,11 @@ public class Day1102 {
                 output = a * b + "";
                 break;
             case "/":
-                output = a / b + "";
+                if (b == 0) {
+                    output = "Error: dev in zero";
+                } else {
+                    output = a / b + "";
+                }
                 break;
             default:
                 output = "Please insert correct operator";
@@ -245,28 +276,25 @@ public class Day1102 {
         System.out.println(output);
         */
         double avgScore = (quiz + mid + fin) / 3;
-        int stage;
-        if (avgScore >= 80)
-            stage = 1;
-        else if (avgScore >= 60)
-            stage = 2;
-        else if (avgScore >= 40)
-            stage = 3;
-        else stage = 4;
+        int stage = (int) avgScore / 10;
+
         String output = "";
         switch (stage) {
             case 1:
-                output = "A";
-                break;
             case 2:
-                output = "B";
-                break;
             case 3:
-                output = "C";
-                break;
-            case 4:
                 output = "F";
                 break;
+            case 4:
+            case 5:
+                output = "C";
+                break;
+            case 6:
+            case 7:
+                output = "B";
+                break;
+            default:
+                output = "A";
         }
         System.out.println("Your grad is " + output);
     }
@@ -298,6 +326,6 @@ public class Day1102 {
                    keyNumber(s);
     }
     */
-        vowelOrConsonant('7');
+        chooseCorrect();
     }
 }
