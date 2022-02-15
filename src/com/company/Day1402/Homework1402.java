@@ -16,12 +16,13 @@ public class Homework1402 {
     //Print all even integer numbers from 1 to 20.
 
     public static void printEvenOneToTwenty() {
-        int i = 2;
-        while (i <= 20) {
-            if (i % 2 == 0) {
-                System.out.println(i);
-            }
+        int i = 1;
+        while (i < 20) {
             i++;
+            if (i % 2 != 0) {
+                continue;
+            }
+            System.out.println(i);
         }
     }
 
@@ -151,7 +152,7 @@ at each line.
      */
     public static void charTable() {
         int i = 32;
-        while (i < 122) {
+        while (i <= 122) {
             int j = 0;
             while (j < 10) {
                 System.out.print((char) i);
@@ -167,14 +168,13 @@ at each line.
     3(Input N from console)
      */
     public static void printExceptMultipleOfTree(int n) {
-        int i = 1;
-        while (i <= n) {
+        int i = 0;
+        while (i < n) {
+            i++;
             if (i % 3 == 0) {
-                i++;
                 continue;
             }
             System.out.println(i);
-            i++;
         }
     }
 
@@ -225,7 +225,7 @@ least y dollars.
     public static int bankDeposit(int x, int p, int y) {
         int years = 0;
         while (x < y) {
-            x += 0.1 * x;
+            x += 0.1 * x * p;
             years++;
         }
         return years;
@@ -301,6 +301,5 @@ until the user correctly guesses the random number.
         //  Scanner sc = new Scanner(System.in);
         //int n = sc.nextInt();
         // System.out.println(athleteMileage(10,15));
-        System.out.println(athleteMileage(10,12));
     }
 }
