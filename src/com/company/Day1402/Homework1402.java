@@ -238,9 +238,10 @@ least y dollars.
     public static void secondLargestSequence() {
         List<Integer> sequence = new ArrayList<>();
         sequence.add(1);
-        sequence.add(8);
-        sequence.add(10);
         sequence.add(9);
+        sequence.add(10);
+        sequence.add(8);
+       // sequence.add(10);
         sequence.add(0);
 
         int i = 0;
@@ -251,7 +252,7 @@ least y dollars.
                 secondMax = maximum;
                 maximum = sequence.get(i);
             }
-            else if(sequence.get(i)>secondMax){
+            else if(sequence.get(i)>secondMax&&sequence.get(i)!=maximum){
                 secondMax=sequence.get(i);
             }
             i++;
