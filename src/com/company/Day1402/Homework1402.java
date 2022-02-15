@@ -46,7 +46,7 @@ number from console.Example
      */
     public static void smallDivisor(int n) {
         int i = 2;
-        while (i < n) {
+        while (i*i < n) {
             if (n % i == 0) {
                 break;
             }
@@ -159,7 +159,7 @@ at each line.
                 j++;
                 i++;
             }
-            System.out.println("\n");
+            System.out.print("\n");
         }
     }
 
@@ -210,7 +210,6 @@ mileage will be at least y kilometers.
         int days = 1;
         while (x < y) {
             x = x + x * 0.1;
-            System.out.println(x);
             days++;
         }
         return days;
@@ -238,11 +237,10 @@ least y dollars.
      */
     public static void secondLargestSequence() {
         List<Integer> sequence = new ArrayList<>();
-        sequence.add(15);
-        sequence.add(28);
-        sequence.add(5);
-        sequence.add(78);
-        sequence.add(100);
+        sequence.add(1);
+        sequence.add(8);
+        sequence.add(10);
+        sequence.add(9);
         sequence.add(0);
 
         int i = 0;
@@ -252,6 +250,9 @@ least y dollars.
             if (sequence.get(i) > maximum) {
                 secondMax = maximum;
                 maximum = sequence.get(i);
+            }
+            else if(sequence.get(i)>secondMax){
+                secondMax=sequence.get(i);
             }
             i++;
         }
@@ -300,6 +301,7 @@ until the user correctly guesses the random number.
     public static void main(String[] args) {
         //  Scanner sc = new Scanner(System.in);
         //int n = sc.nextInt();
-        // System.out.println(athleteMileage(10,15));
+        secondLargestSequence();
+
     }
 }
