@@ -46,13 +46,14 @@ Input` 2 8 Output ` 4
     public static void printSquares(int a, int b) {
         if (a * a > b) {
             System.out.println("There isn't any squares");
-        } else {
+            return;
+        }
             for (int i = a; i < b; i++) {
-                if (i * i <= b)
-                    System.out.println(i * i);
+                if (Math.sqrt(i)==(int)Math.sqrt(i))
+                    System.out.println(i +" ");
             }
         }
-    }
+
 
     /*
 4.Enters 2 integer numbers : x and d from console
@@ -317,7 +318,7 @@ a) b) c) d)
             }
 
             public static void main (String[]args){
-                printSquares(2, 8);
+                printSquares(3, 9);
             }
         }
 
