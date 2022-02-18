@@ -106,6 +106,7 @@ corner are equal to 1;
         }
         Homework1602.printMaxAndIndex(sumOfEachRow);
     }
+
     /*
     5.There are n athletes competing in hammer throw. Each of them made
 m throws. The winner of the competition is the athlete who has the best
@@ -126,38 +127,39 @@ several such elements in this line, then you need to display the minimum
 column number. Remember that all rows and columns are numbered
 from 0.
      */
-public static void maxElementInMatrix(int n,int m ){
-    int[][] array = generateArray(n, m);
-    printMatrix(array);
-   int max=0;
-   int row=0,column=0;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < m; j++) {
-            if(array[i][j]>max) {
-                max = array[i][j];
-                row=i;
-                column=j;
+    public static void maxElementInMatrix(int n, int m) {
+        int[][] array = generateArray(n, m);
+        printMatrix(array);
+        int max = 0;
+        int row = 0, column = 0;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++) {
+                if (array[i][j] > max) {
+                    max = array[i][j];
+                    row = i;
+                    column = j;
+                }
             }
-        }
-    System.out.println(max+"   "+row+"   "+column);
-}
-/*
-6.There are n athletes competing in hammer throw. Each of them made
-m throws. The athlete with the highest best throw wins. If there are
-several of them, then the one with the best sum of results for all attempts
-wins. If there are several of them, the athlete with the minimum number
-is considered the winner. Determine the number of the winner of the
-competition.
+        System.out.println(max + "   " + row + "   " + column);
+    }
 
-Input` The program receives as input two numbers n and m, which are
-the number of rows and columns in the array. Then in the input stream
-there are n lines containing m numbers each, which are the elements of
-the array.
-Output` The program should display one number - the number of the
-winner of the competition. Do not forget that the lines (athletes) are
-numbered from 0.
- */
-    public static void maxAndSumMax(int n,int m){
+    /*
+    6.There are n athletes competing in hammer throw. Each of them made
+    m throws. The athlete with the highest best throw wins. If there are
+    several of them, then the one with the best sum of results for all attempts
+    wins. If there are several of them, the athlete with the minimum number
+    is considered the winner. Determine the number of the winner of the
+    competition.
+
+    Input` The program receives as input two numbers n and m, which are
+    the number of rows and columns in the array. Then in the input stream
+    there are n lines containing m numbers each, which are the elements of
+    the array.
+    Output` The program should display one number - the number of the
+    winner of the competition. Do not forget that the lines (athletes) are
+    numbered from 0.
+     */
+    public static void maxAndSumMax(int n, int m) {
         int[][] array = generateArray(n, m);
         printMatrix(array);
 
@@ -167,40 +169,87 @@ numbered from 0.
             }
     }
 
-    public static int[][] reverse180(int[][] array){
+    public static int[][] reverse180(int[][] array) {
         printMatrix(array);
         System.out.println();
-        int n=array.length;
-        int m=array[0].length;
-        int[][] reverseArray=new int[n][m];
-        for (int i = n-1; i >=0; i--)
-            for (int j = m-1; j >=0; j--) {
-                reverseArray[n-1-i][m-1-j]=array[i][j];
+        int n = array.length;
+        int m = array[0].length;
+        int temp;
+        int step = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (step == (n * m) / 2) {
+                    break;
+                }
+                temp = array[i][j];
+                array[i][j] = array[n - 1 - i][m - 1 - j];
+                array[n - 1 - i][m - 1 - j] = temp;
+                step++;
             }
-        return reverseArray;
         }
+        return array;
+    }
+
+
 
     public static void main(String[] args) {
-      printMatrix(reverse180(generateArray(4,5)));
+        printMatrix(generateSpiral(9, 9));
 
     }
-/*
-8.Write a Java program to add two matrices of the same size.
- */
-    public static int[][] sum(int[][] arr1,int[][] arr2){
+
+    /*
+    8.Write a Java program to add two matrices of the same size.
+     */
+    public static int[][] sum(int[][] arr1, int[][] arr2) {
         printMatrix(arr1);
         System.out.println("______________");
         printMatrix(arr2);
         System.out.println("______________");
-        int n=arr1.length;
-        int m=arr1[0].length;
-        int[][] sum=new int [n][m];
+        int n = arr1.length;
+        int m = arr1[0].length;
+        int[][] sum = new int[n][m];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < m; j++) {
-                sum[i][j]=arr1[i][j]+arr2[i][j];
+                sum[i][j] = arr1[i][j] + arr2[i][j];
             }
         return sum;
     }
+
+    /*
+  9.It is required to fill an array of size N × N with ones in a spiral (starting
+from the upper left corner clockwise, see example).
+   */
+    public static int[][] generateSpiral(int n, int m) {
+        int[][] array = new int[n][m];
+
+        int k=0;
+        int i=0,j=0;
+        while (k<n) {
+            while (j < m-k - 1) {
+                array[i][j] = 1;
+                j++;
+            }
+            while (i < n-k-1) {
+                array[i][j] = 1;
+                i++;
+            }
+            while (j >= 0+k) {
+                array[i][j] = 1;
+                j--;
+            }
+            j=0+k;
+            k+=2;
+            while (i>k){
+                array[i][j]=1;
+                i--;
+            }
+
+        }
+
+           return array;
+         }
+
+
     public static int[][] generateArray(int n, int m) {
         Random random = new Random();
         int[][] array = new int[n][m];
@@ -225,10 +274,11 @@ numbered from 0.
         return array;
     }
 
+
     public static void printMatrix(int[][] array) {
         for (int[] arr : array) {
             for (int j : arr) {
-                System.out.print(j+" ");
+                System.out.print(j + " ");
             }
             System.out.println();
         }
