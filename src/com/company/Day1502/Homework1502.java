@@ -217,7 +217,7 @@ of positive and negative numbers.
     /*
     13. Write a Java program by using two for loops to produce the output
 shown below:
-1.Input N natural number, print picture like below in size N*N
+Input N natural number, print picture like below in size N*N
 ***********
 ***********
 ***********

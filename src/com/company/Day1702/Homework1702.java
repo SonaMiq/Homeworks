@@ -18,7 +18,7 @@ corner are equal to 1;
             for (int j = 0; j < size; j++) {
                 if (j == size - 1 - i) {
                     array[i][j] = 1;
-                } else array[i][j] = 0;
+                }
             }
         }
         printMatrix(array);
@@ -60,16 +60,15 @@ corner are equal to 1;
     2 3 4             1 0 0
     Output` YES       Output` NO
      */
-    public static void checkSymmetric(int[][] array) {
-        boolean symmetric = true;
+    public static boolean checkSymmetric(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
-                if (array[i][j] != array[j][i] || array[i][i] != array[j][j]) {
-                    symmetric = false;
+                if (array[i][j] != array[j][i] ) {
+                    return false ;
                 }
             }
         }
-        System.out.println(symmetric ? "Yes" : "No");
+                 return true;
     }
 
     /*
@@ -179,7 +178,7 @@ from 0.
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (step == (n * m) / 2) {
-                    break;
+                    return array;
                 }
                 temp = array[i][j];
                 array[i][j] = array[n - 1 - i][m - 1 - j];
@@ -190,12 +189,6 @@ from 0.
         return array;
     }
 
-
-
-    public static void main(String[] args) {
-        printMatrix(generateSpiral(9, 9));
-
-    }
 
     /*
     8.Write a Java program to add two matrices of the same size.
@@ -222,32 +215,32 @@ from the upper left corner clockwise, see example).
     public static int[][] generateSpiral(int n, int m) {
         int[][] array = new int[n][m];
 
-        int k=0;
-        int i=0,j=0;
-        while (k<n) {
-            while (j < m-k - 1) {
+        int k = 0;
+        int i = 0, j = 0;
+        while (k < n) {
+            while (j < m - k - 1) {
                 array[i][j] = 1;
                 j++;
             }
-            while (i < n-k-1) {
+            while (i < n - k - 1) {
                 array[i][j] = 1;
                 i++;
             }
-            while (j >= 0+k) {
+            while (j >= 0 + k) {
                 array[i][j] = 1;
                 j--;
             }
-            j=0+k;
-            k+=2;
-            while (i>k){
-                array[i][j]=1;
+            j = 0 + k;
+            k += 2;
+            while (i > k) {
+                array[i][j] = 1;
                 i--;
             }
 
         }
 
-           return array;
-         }
+        return array;
+    }
 
 
     public static int[][] generateArray(int n, int m) {
@@ -282,5 +275,11 @@ from the upper left corner clockwise, see example).
             }
             System.out.println();
         }
+    }
+
+    public static void main(String[] args) {
+       int[][] array = generateSymmetricArray(4);
+      printMatrix(array);
+        System.out.println(checkSymmetric(array));
     }
 }

@@ -60,7 +60,7 @@ Example` Input ` 1 5 2 4 3 Output` 5 4
      */
     public static void largeThanPreviousElements(int[] input) {
         for (int i = 0; i < input.length - 1; i++) {
-            if (input[i] > input[i + 1])
+            if (input[i + 1] > input[i])
                 System.out.print(input[i] + " ");
         }
     }
@@ -74,10 +74,10 @@ Example` Input ` 1 5 2 4 3 Output` 5 4
     Output` 2 3
      */
     public static void adjacent(int[] array) {
-        for (int i = 0; i < array.length-1; i++) {
-            if((array[i]>0&&array[i+1]>0)||(array[i]<0&&array[i+1]<0)){
-                System.out.println(array[i]+", "+array[i+1]);
-                return;
+        for (int i = 0; i < array.length - 1; i++) {
+            if ((array[i] * array[i + 1] > 0)) {
+                System.out.println(array[i] + ", " + array[i + 1]);
+                break;
             }
         }
     }
@@ -90,15 +90,13 @@ Example` Input` 1 2 3 2 1
 Output` The largest is 3 index is 2
      */
     public static void printMaxAndIndex(int[] array) {
-        int max = array[0];
         int index = 0;
         for (int i = 1; i < array.length; i++) {
-            if (array[i] > max) {
-                max = array[i];
+            if (array[i] > array[index]) {
                 index = i;
             }
         }
-        System.out.println("max: " + max + " index: " + index);
+        System.out.println("max: " + array[index] + " index: " + index);
     }
 
     /*
@@ -185,7 +183,6 @@ Output ` 2 1 4 3 5
         }
         return array;
     }
-
 
 
     /*
@@ -293,7 +290,6 @@ Output ` 1 3 5 0 0
             }
             if (array[i] == 0 && array[i + 1] == 0) {
                 zeroCount++;
-                continue;
             }
         }
         return array;
@@ -303,7 +299,7 @@ Output ` 1 3 5 0 0
         Random random = new Random();
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
-            array[i] = random.nextInt(20)-10;
+            array[i] = random.nextInt(3) ;
         }
         return array;
     }
@@ -318,7 +314,6 @@ Output ` 1 3 5 0 0
     public static void main(String[] args) {
         int[] arr = generateArray(10);
         printArray(arr);
-        adjacent(arr);
     }
 
 }
