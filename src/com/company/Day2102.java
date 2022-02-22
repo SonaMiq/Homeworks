@@ -15,6 +15,11 @@ public class Day2102 {
     Pass as a parameters String str, int index
     */
     public static char getSymbol(String s, int index) {
+        if(index>=s.length()){
+            System.out.println("Incorrect index");
+            return ' ';
+        }
+
         return s.charAt(index);
     }
 
@@ -22,14 +27,13 @@ public class Day2102 {
     3.Write a function which checks if the given String contains a given character.Pass as parameters
    String str, char ch
      */
-    public static boolean isContain(String str, Character ch) {
+    public static boolean isContain(String str, char ch) {
 
-        boolean isContain = false;
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == ch)
-                isContain = true;
+                return true;
         }
-        return isContain;
+        return false;
 
     }
 
@@ -37,8 +41,9 @@ public class Day2102 {
 
     public static int countOfVowels(String str) {
         int vowelCount = 0;
+        String s=str.toLowerCase();
         for (int i = 0; i < str.length(); i++) {
-            switch (str.toLowerCase().charAt(i)) {
+            switch (s.charAt(i)) {
                 case 'a':
                 case 'e':
                 case 'i':
@@ -57,11 +62,11 @@ public class Day2102 {
     The reverse of the String &quot;abcdef&quot; is &quot;fedcba&quot;
      */
     public static String reverse(String str) {
-        String s = "";
+       StringBuilder s=new StringBuilder(str);
         for (int i = str.length() - 1; i >= 0; i--) {
-            s += str.charAt(i);
+           s.append(str.charAt(i));
         }
-        return s;
+        return s.toString();
     }
 
     /*
@@ -74,9 +79,9 @@ the counts and the percentages (rounded to 2 decimal places).
         int digitCount = countOfDigits(str);
         double vowelPercent = (double) vowelCount * 100 / str.length();
         double digitPercent = (double) digitCount * 100 / str.length();
-        System.out.printf("Number of vowels: %d, (%f)", vowelCount, vowelPercent);
+        System.out.printf("Number of vowels: %d, (%.2f)", vowelCount, vowelPercent);
         System.out.println();
-        System.out.printf("Number of digits: %d,(%f)", digitCount, digitPercent);
+        System.out.printf("Number of digits: %d,(%.2f)", digitCount, digitPercent);
     }
 
     public static int countOfDigits(String str) {
@@ -96,18 +101,18 @@ the counts and the percentages (rounded to 2 decimal places).
     'A', ..., 'Z' by 'C'.
      */
     public static void caesarCode(String str, int n) {
-        String output = "";
+        StringBuilder output = new StringBuilder(str);
         String input = str.toLowerCase(Locale.ROOT);
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) <= 122 - n) {
-                output += (char) (input.charAt(i) + n);
+                output.append((char) (input.charAt(i) + n));
             } else {
                 int dif = n - (122 - input.charAt(i) + 1);
-                output += (char) (97 + dif);
+                output.append((char) (97 + dif));
                 // output+=(char)(97+n);
             }
         }
-        System.out.println(output.toUpperCase(Locale.ROOT));
+        System.out.println(output.toString().toUpperCase(Locale.ROOT));
     }
 
 
@@ -205,6 +210,6 @@ number.
     }
 
     public static void main(String[] args) {
-        System.out.println(bin2Dec("101"));
+        countVowelsDigits("Testing123456");
     }
 }
