@@ -63,12 +63,12 @@ corner are equal to 1;
     public static boolean checkSymmetric(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
-                if (array[i][j] != array[j][i] ) {
-                    return false ;
+                if (array[i][j] != array[j][i]) {
+                    return false;
                 }
             }
         }
-                 return true;
+        return true;
     }
 
     /*
@@ -267,7 +267,6 @@ from the upper left corner clockwise, see example).
         return array;
     }
 
-
     public static void printMatrix(int[][] array) {
         for (int[] arr : array) {
             for (int j : arr) {
@@ -278,8 +277,8 @@ from the upper left corner clockwise, see example).
     }
 
     public static void main(String[] args) {
-       int[][] array = generateSymmetricArray(4);
-      printMatrix(array);
-        System.out.println(checkSymmetric(array));
+        int[][] array = generateSpiral(11, 11);
+        printMatrix(array);
+
     }
 }

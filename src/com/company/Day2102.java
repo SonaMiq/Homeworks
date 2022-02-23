@@ -1,7 +1,6 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.Locale;
+import java.util.*;
 
 public class Day2102 {
 
@@ -210,6 +209,6 @@ number.
     }
 
     public static void main(String[] args) {
-        countVowelsDigits("Testing123456");
+
     }
 }
