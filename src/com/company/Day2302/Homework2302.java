@@ -1,11 +1,10 @@
-package com.company.Day1802;
+package com.company.Day2302;
 
-import com.company.Day1602.Homework1602;
 import com.company.Day1702.Homework1702;
 
 import java.util.Locale;
 
-public class Homework1802 {
+public class Homework2302 {
     /*
     A natural number N is given (entered from the keyboard). Calculate two to the power of N
 Display the calculated value (1 <= N<= 15).
