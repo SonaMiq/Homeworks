@@ -1,7 +1,5 @@
 package com.company.Day2302;
 
-import java.util.ArrayList;
-
 public class StringToExpression {
     static StringBuilder operands = new StringBuilder();
     static StringBuilder operators = new StringBuilder();
@@ -23,13 +21,17 @@ public class StringToExpression {
         for (int i = 0; i < opr.length; i++) {
             switch (opr[i]) {
                 case "*": {
-                    opd[i+1] = String.valueOf(Integer.valueOf(opd[i]) * Integer.valueOf(opd[i + 1]));
+                    opd[i+1] = String.valueOf(Integer.parseInt(opd[i]) * Integer.parseInt(opd[i + 1]));
                     opd[i] = "_";
                     opr[i] = "";
                     break;
                 }
                 case "/": {
-                    opd[i+1] = String.valueOf(Integer.valueOf(opd[i]) / Integer.valueOf(opd[i + 1]));
+                    if( Integer.parseInt(opd[i + 1])==0){
+                        System.out.println("Invalid input");
+                        return;
+                    }
+                    opd[i+1] = String.valueOf(Integer.parseInt(opd[i]) / Integer.parseInt(opd[i + 1]));
                     opd[i] = "_";
                     opr[i] = "";
                 }
@@ -42,7 +44,7 @@ public class StringToExpression {
         while (opd[opdIndex]=="_"){
             opdIndex++;
         }
-        result=Integer.valueOf(opd[opdIndex]);
+        result=Integer.parseInt(opd[opdIndex]);
         for (int i = 0;i < opr.length; i++) {
             opdIndex=i;
             switch (opr[i]) {
@@ -50,13 +52,13 @@ public class StringToExpression {
                     while (opd[opdIndex+1]=="_"){
                         opdIndex++;
                     }
-                    result += Integer.valueOf(opd[opdIndex+1]);
+                    result += Integer.parseInt(opd[opdIndex+1]);
                     break;
                 case "-":
                     while (opd[opdIndex+1]=="_"){
                         opdIndex++;
                     }
-                    result -= Integer.valueOf(opd[opdIndex+1]);
+                    result -= Integer.parseInt(opd[opdIndex+1]);
             }
         }
     }
@@ -69,8 +71,8 @@ public class StringToExpression {
                 case '*':
                 case '/':
                 case '-':
-                    operands.append(s.substring(start, i) + " ");
-                    operators.append(s.charAt(i) + " ");
+                    operands.append(s.substring(start, i)).append(" ");
+                    operators.append(s.charAt(i)).append(" ");
                     start = i + 1;
             }
 
