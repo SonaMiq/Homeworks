@@ -42,10 +42,7 @@ public class Triangle {
     }
 
     private boolean isTriangleValid() {
-        if (sideA >= sideB + sideC || sideB >= sideA + sideC || sideC >= sideA + sideB) {
-            return false;
-        }
-        return true;
+        return sideA <sideB + sideC && sideB < sideA + sideC &&sideC < sideA + sideB;
     }
 
     public boolean check(Triangle triangle) {
