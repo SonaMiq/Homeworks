@@ -28,7 +28,7 @@ public final class PersonValidator {
     public static boolean isValidPassportID(String passportId) {
         if (passportId == null || passportId.length() == 0)
             return false;
-        return passportId.length() == 8 && passportId.substring(0, 2).equals("AN") && passportId.substring(2).length() == 6
+        return passportId.length() == 8 && "AN".equals(passportId.substring(0, 2)) && passportId.substring(2).length() == 6
                 && isDigits(passportId.substring(2));
 
     }
