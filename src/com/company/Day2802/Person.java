@@ -47,64 +47,35 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
-        if (firstName == null || firstName.length() < 3 || firstName.length() > 15) {
-            System.out.println("Invalid input");
-            return;
-        }
+
         this.firstName = firstName;
     }
 
     public void setLastName(String lastName) {
-        if (lastName == null || lastName.length() < 6 || lastName.length() > 20) {
 
-            System.out.println("Invalid input");
-            return;
-        }
         this.lastName = lastName;
     }
 
     public void setPassportId(String passportId) {
 
-
-        if (passportId == null || passportId.length() != 8 || !passportId.substring(0, 2).equals("AN") || passportId.substring(2).length() != 6
-                || !isDigits(passportId.substring(2))) {
-            System.out.println("Invalid input");
-            return;
-        }
-
-
         this.passportId = passportId;
     }
 
-    private boolean isDigits(String s) {
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) < '0' || s.charAt(i) > '9')
-                return false;
-        }
-        return true;
-    }
+
 
 
     public void setAge(int age) {
-        if (age < 18 || age > 99) {
-            System.out.println("Invalid input");
-            return;
-        }
+
         this.age = age;
     }
 
     public void setGender(String gender) {
-        if (gender == null || !(gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female"))) {
-            System.out.println("Invalid input");
-            return;
-        }
+
         this.gender = gender;
     }
 
     public void setNationality(String nationality) {
-        if (nationality == null) {
-            return;
-        }
+
         this.nationality = nationality;
     }
 
