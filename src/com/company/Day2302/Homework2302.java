@@ -34,9 +34,12 @@ Display the calculated value (1 <= N<= 15).
 
     /*
     Write a java program to determine whether the number is prime or not.
-     */
+    */
     public static boolean isPrime(int number) {
-        if (number == 1 || number == 2) {
+        if (number <= 1) {
+            return false;
+        }
+        if (number == 2) {
             return true;
         }
         if (number % 2 == 0) {
@@ -69,12 +72,11 @@ Display the calculated value (1 <= N<= 15).
             n = n * 10 + input % 10;
             input /= 10;
         }
-
         return number == n;
     }
 
     /*
-    A three-letter word is given. The word consists only of Latin letters, small and large. Print the
+    7.A three-letter word is given. The word consists only of Latin letters, small and large. Print the
     same word, where the first letter is capitalized, the rest are small.
      */
     public static String convert(String s) {
@@ -121,17 +123,20 @@ period.
     Example` Input` 120 2*2*2*3*5
      */
     public static void primeFactors(int number) {
-        String out = "";
+        if (number <= 1) {
+            return;
+        }
+        StringBuilder out = new StringBuilder();
         int n = number;
         int i = 2;
         while (!isPrime(n)) {
             if (n % i == 0 && isPrime(i)) {
-                out += i + "*";
+                out.append(i).append("*");
                 n = n / i;
             } else i++;
 
         }
-        System.out.println(out + n);
+        System.out.println(out.toString() + n);
     }
 
     /*
@@ -141,20 +146,23 @@ filling of the array must be done in one cycle.
      */
     public static int[][] twoDimensionalMult(int n, int m) {
         int[][] matrix = new int[n][m];
-        int j = 0;
-        for (int i = 0; i < n; i++) {
-            matrix[i][j] = matrix[j][i] = i * j;
-            j++;
-            --i;
-            if (j == m) {
-                j = 0;
-                i++;
-            }
-
+        int row;
+        int col;
+        for (int i = 0; i < n * m; i++) {
+            row = i / m;
+            col = i % m;
+            matrix[row][col] = row * col;
         }
         return matrix;
-
     }
+
+    /*
+    12.Given numbers n and m. Create an array A [n] [m] and fill it as shown in the example.
+     */
+
+
+
+
 
     /*
     13.Given numbers n and m. Create an array A [n] [m] and fill it with a snake.
@@ -180,7 +188,6 @@ filling of the array must be done in one cycle.
 
 
     public static void main(String[] args) {
-        Homework1702.printMatrix(matrixEx2(4, 10));
 
     }
 }
