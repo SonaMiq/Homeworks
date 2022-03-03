@@ -1,4 +1,4 @@
-package com.company.Day0203.Animal;
+package com.company.Day0203.animal;
 
 public class Dog extends Animal {
     @Override

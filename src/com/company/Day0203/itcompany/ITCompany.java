@@ -1,6 +1,4 @@
-package com.company.Day0203.ITCompany;
-
-import com.company.Day0203.Accounting.Accounting;
+package com.company.Day0203.itcompany;
 
 public class ITCompany {
 
