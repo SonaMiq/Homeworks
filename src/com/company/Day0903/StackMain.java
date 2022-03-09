@@ -13,8 +13,8 @@ public class StackMain {
         System.out.println(stack.pop());
         stack.push(7);
         stack.push(8);
-      //  stack.push(9);
-        System.out.println(stack.pop());
+        stack.push(9);
+       // System.out.println(stack.pop());
 
     }
 }
