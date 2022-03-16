@@ -27,12 +27,14 @@ public class LinkedList implements List {
     public void add(int val) {
         if (head == null) {
             head = new Node(val, null);
+            size++;
             return;
         }
         Node top = head;
         while (top.next != null)
             top = top.next;
         top.next = new Node(val, null);
+        size++;
 
     }
 
@@ -49,6 +51,7 @@ public class LinkedList implements List {
     public void add(int index, int val) {
         if (head == null) {
             head = new Node(val, null);
+            size++;
             return;
         }
 
@@ -61,21 +64,12 @@ public class LinkedList implements List {
             top = top.next;
         }
         top.next = new Node(val, top.next);
-
+        size++;
 
     }
 
     @Override
     public int size() {
-        if (head == null)
-            return 0;
-        Node node = head;
-        int size = 1;
-        while (node.next != null) {
-            node = node.next;
-            size++;
-        }
-
         return size;
     }
 
@@ -83,6 +77,7 @@ public class LinkedList implements List {
     public void delete(int index) {
         if (index == 0) {
             head = head.next;
+            size--;
             return;
         }
         Node node = head;
@@ -90,5 +85,16 @@ public class LinkedList implements List {
             node = node.next;
         }
         node.next = node.next.next;
+        size--;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("");
+        for (int i = 0; i < this.size - 1; i++) {
+            s.append(this.get(i) + "->");
+        }
+        s.append(this.get(size - 1));
+        return s.toString();
     }
 }

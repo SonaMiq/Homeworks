@@ -8,10 +8,8 @@ public class Main {
         linkedList.add(4);
         linkedList.add(2, 15);
         linkedList.add(5);
-        linkedList.delete(0);
-        for (int i = 0; i < linkedList.size(); i++) {
-            System.out.println(linkedList.get(i));
-        }
+      //  linkedList.delete(0);
+        System.out.println(linkedList.toString());
 
     }
 }
