@@ -1,7 +1,10 @@
 package com.company.Day1603;
 
+import java.util.Iterator;
+
 public class LinkedList implements List {
 
+    private static LinkedList linkedList;
     private int size;
 
     private static class Node {
@@ -12,9 +15,17 @@ public class LinkedList implements List {
             this.val = val;
             this.next = next;
         }
+
+        public Node getNext() {
+            return next;
+        }
     }
 
     private Node head;
+
+    LinkedList() {
+        linkedList = this;
+    }
 
     @Override
     public boolean isEmpty() {
@@ -97,4 +108,26 @@ public class LinkedList implements List {
         s.append(this.get(size - 1));
         return s.toString();
     }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < linkedList.size();
+            }
+
+            @Override
+            public Integer next() {
+
+                int out = linkedList.get(index);
+                index++;
+                return out;
+            }
+        };
+    }
+
+
 }

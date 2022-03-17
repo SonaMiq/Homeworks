@@ -6,10 +6,14 @@ public class Main {
         LinkedList linkedList = new LinkedList();
         linkedList.add(20);
         linkedList.add(4);
-        linkedList.add(2, 15);
         linkedList.add(5);
-      //  linkedList.delete(0);
-        System.out.println(linkedList.toString());
+        linkedList.delete(0);
+        for (int i:linkedList) {
+            System.out.println(i);
+        }
+
+
+
 
     }
 }

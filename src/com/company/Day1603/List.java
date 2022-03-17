@@ -1,6 +1,9 @@
 package com.company.Day1603;
 
-public interface List {
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public interface List extends Iterable<Integer>  {
 
      int size();
      boolean isEmpty();
@@ -8,4 +11,7 @@ public interface List {
      void add(int val);
      void add(int index,int val);
      void delete(int index);
+
+
 }
+
