@@ -7,10 +7,12 @@ public class Main {
         linkedList.add(20);
         linkedList.add(4);
         linkedList.add(5);
-        linkedList.delete(0);
+        linkedList.add(7);
+       linkedList.add(0,5);
         for (int i:linkedList) {
             System.out.println(i);
         }
+
 
 
 

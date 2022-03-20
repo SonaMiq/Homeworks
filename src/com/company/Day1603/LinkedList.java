@@ -4,34 +4,24 @@ import java.util.Iterator;
 
 public class LinkedList implements List {
 
-    private static LinkedList linkedList;
     private int size;
 
     private static class Node {
-        private int val;
-        private Node next;
+         int val;
+         Node next;
 
         Node(int val, Node next) {
             this.val = val;
             this.next = next;
         }
 
-        public Node getNext() {
-            return next;
-        }
     }
 
     private Node head;
 
-    LinkedList() {
-        linkedList = this;
-    }
-
     @Override
     public boolean isEmpty() {
-        if (head == null)
-            return true;
-        return false;
+        return head == null;
     }
 
     @Override
@@ -51,6 +41,8 @@ public class LinkedList implements List {
 
     @Override
     public int get(int index) {
+        if (index>=size)
+            throw new IndexOutOfBoundsException();
         Node top = head;
         for (int i = 0; i < index; i++) {
             top = top.next;
@@ -60,6 +52,8 @@ public class LinkedList implements List {
 
     @Override
     public void add(int index, int val) {
+        if (index>=size)
+            throw new IndexOutOfBoundsException();
         if (head == null) {
             head = new Node(val, null);
             size++;
@@ -68,6 +62,7 @@ public class LinkedList implements List {
 
         if (index == 0) {
             head = new Node(val, head);
+            size++;
             return;
         }
         Node top = head;
@@ -86,6 +81,8 @@ public class LinkedList implements List {
 
     @Override
     public void delete(int index) {
+        if (index>=size)
+            throw new IndexOutOfBoundsException();
         if (index == 0) {
             head = head.next;
             size--;
@@ -111,23 +108,28 @@ public class LinkedList implements List {
 
     @Override
     public Iterator<Integer> iterator() {
-        return new Iterator() {
-            private int index = 0;
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<Integer> {
+
+          private  Node node=head;
+          private  int index;
 
             @Override
             public boolean hasNext() {
-                return index < linkedList.size();
+                return index<size;
             }
 
-            @Override
-            public Integer next() {
-
-                int out = linkedList.get(index);
+        @Override
+        public Integer next() {
+            Integer value =  node.val;
+                node=node.next;
                 index++;
-                return out;
-            }
-        };
+            return value;
+        }
+    }
     }
 
 
-}
+
