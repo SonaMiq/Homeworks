@@ -178,7 +178,6 @@ largest digit.
             return numberOfDigits(s.substring(1));
         }
     }
-
     /*
     14.Given a string containing only English letters (uppercase and
 lowercase). Add the ‘*’ (asterisk) character between letters (you don’t
@@ -248,10 +247,10 @@ need to add ‘*’ before the first letter and after the last).
         if(s.charAt(0)==s.charAt(s.length()-1)) {
             return cutSymmetric(s.substring(1, s.length() - 1));
         }
-        return s.charAt(0)+s.substring(1,s.length()-1)+s.charAt(s.length()-1);
+        return s.charAt(0)+cutSymmetric(s.substring(1,s.length()-1))+s.charAt(s.length()-1);
     }
 
     public static void main(String[] args) {
-        System.out.println(cutSymmetric("shgjghs"));
+        System.out.println(cutSymmetric("ahgjghs"));
     }
 }
